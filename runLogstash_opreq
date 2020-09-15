@@ -1,0 +1,56 @@
+pipeline {
+
+       agent { 
+                label 'node4'
+            }
+      
+
+    stages {
+
+stage("start elasticsearch"){
+       
+        steps {
+           
+            echo "start elasticsearch"
+            //cd C:/Users
+            
+             sh script:'''
+          #!/bin/bash
+          cd /home/ilhem/Bureau/EL/elasticsearch-7.8.0/bin
+         ./elasticsearch &
+          sleep 2m
+          
+          
+        '''
+           
+         
+        }
+    }
+    
+     stage("start logstash Operation Request"){
+       
+        steps {
+           
+            echo "start logstash"
+            //cd C:/Users
+            
+             sh script:'''
+          #!/bin/bash
+          cd /home/ilhem/Bureau/EL/logstash-7.8.0/bin
+         pwd
+         
+         ./logstash -f conf_opreq.conf &
+          sleep 10m
+          
+          
+        '''
+           
+         
+        }
+    }
+    
+    }
+    }
+    
+   
+    
