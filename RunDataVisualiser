@@ -48,16 +48,16 @@ stage("Clean DataAnalyser"){
     
 
       
-stage("Build DataVisualiser"){
+stage("Build DataAnalyser"){
        
         steps {
            
-            echo "build DataVisualiser"
+            echo "build DataAnalyser"
             //cd C:/Users
             
              sh script:'''
           #!/bin/bash
-          cd /home/ilhem/NetBeansProjects/DataVisualiser
+          cd /home/ilhem/NetBeansProjects/DataAnalyser
          pwd
          mvn package
           
@@ -69,17 +69,17 @@ stage("Build DataVisualiser"){
     }
     
     
-     stage("start DataVisualiser"){
+     stage("start DataAnalyser"){
        
         steps {
          
-            echo "start DataVisualiser"
+            echo "start DataAnalyser"
             //cd C:/Users
             
              sh script:'''
           #!/bin/bash
-          cd /home/ilhem/NetBeansProjects/DataVisualiser/target
-        java -jar DataVisualiser-1.0-SNAPSHOT.jar
+          cd /home/ilhem/NetBeansProjects/DataAnalyser/target
+        java -jar DataAnalyser-1.0-SNAPSHOT.jar
           
          
         '''
