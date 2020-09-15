@@ -1,0 +1,166 @@
+pipeline {
+
+       agent { 
+                label 'node4'
+            }
+      
+
+    stages {
+      
+   stage("clean queues") {
+      steps {
+           
+            echo "clean queues"
+           sh script:'''
+          #!/bin/bash
+    
+           cd /home/ilhem/Bureau/activemq/apache-activemq-5.16.0/bin
+           ./activemq purge
+          
+              
+        '''
+            }
+    }
+    
+   stage("clean WorkingData") {
+     
+        steps {
+           
+            echo "clean workingData"
+            //cd C:/Users
+           
+           sh script:'''
+          #!/bin/bash
+    
+           cd /home/ilhem/Bureau/SGWf
+           ./cleanWorkingData.sh
+           
+        '''  
+             
+        
+        
+        }
+    }
+   
+    stage("clean SGW log") {
+     
+        steps {
+           
+            echo "clean SGW log"
+            
+           
+           sh script:'''
+          #!/bin/bash
+    
+           cd /home/ilhem/Bureau/SGWf
+           ./cleanSGWlog.sh
+           
+        '''  
+             
+        
+        
+        }
+    }
+    
+        
+ 
+   stage("start activemq1"){
+       
+        steps {
+           
+            echo "start activemq1"
+            //cd C:/Users
+            
+             sh script:'''
+          #!/bin/bash
+          cd /home/ilhem/Bureau/activemq/apache-activemq-5.16.0/bin
+         pwd
+         ./activemq start
+        sleep 3m  
+          
+        '''
+           
+         
+        }
+    }
+    
+    
+        
+  stage("start xsimulator"){
+       
+        steps {
+           
+            echo "start xsimulator"
+        
+            
+             sh script:'''
+          #!/bin/bash
+          cd /home/ilhem/Bureau/Xsimulator/Xsimulator_Trade_Reception
+         ./TestStartUp.sh 
+          sleep 3m
+          
+        '''
+           
+         
+        }
+    }
+    
+    stage("start SGW"){
+       
+        steps {
+           
+            echo "start SGW"
+            
+            
+             sh script:'''
+          #!/bin/bash
+          cd /home/ilhem/Bureau/SGWf/bin
+         pwd
+         ./gateway.sh start
+          sleep 3m
+          
+          
+        '''
+           
+         
+        }
+    }
+  stage("start xsimulator2"){
+       
+        steps {
+           
+            echo "start xsimulator"
+            //cd C:/Users
+            
+             sh script:'''
+          #!/bin/bash
+          cd /home/ilhem/Bureau/Xsimulator/Xsimulator_Request_Operation
+         ./TestStartUp.sh 
+          sleep 3m
+          
+        '''
+           
+         
+        }
+    }
+    
+     stage("start xsimulator3"){
+       
+        steps {
+           
+            echo "start xsimulator"
+       
+            
+             sh script:'''
+          #!/bin/bash
+          cd /home/ilhem/Bureau/Xsimulator/Xsimulator_Confirmation
+         ./TestStartUp.sh 
+          sleep 3m
+          
+        '''
+           
+         
+        }
+    }
+    
+    } }
