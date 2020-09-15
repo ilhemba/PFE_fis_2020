@@ -1,0 +1,96 @@
+pipeline {
+
+       agent { 
+                label 'node4'
+            }
+      
+
+    stages {
+        stage("start elasticsearch"){
+       
+        steps {
+           
+            echo "start elasticsearch"
+            //cd C:/Users
+            
+             sh script:'''
+          #!/bin/bash
+          cd /home/ilhem/Bureau/EL/elasticsearch-7.8.0/bin
+         ./elasticsearch &
+          sleep 2m
+          
+          
+        '''
+           
+         
+        }
+    }
+    
+      
+stage("Clean DataAnalyser"){
+       
+        steps {
+           
+            echo "build DataAnalyser"
+            //cd C:/Users
+            
+             sh script:'''
+          #!/bin/bash
+          cd /home/ilhem/NetBeansProjects/DataAnalyser
+         mvn clean
+          
+          
+        '''
+           
+         
+        }
+    }
+    
+
+      
+stage("Build DataVisualiser"){
+       
+        steps {
+           
+            echo "build DataVisualiser"
+            //cd C:/Users
+            
+             sh script:'''
+          #!/bin/bash
+          cd /home/ilhem/NetBeansProjects/DataVisualiser
+         pwd
+         mvn package
+          
+          
+        '''
+           
+         
+        }
+    }
+    
+    
+     stage("start DataVisualiser"){
+       
+        steps {
+         
+            echo "start DataVisualiser"
+            //cd C:/Users
+            
+             sh script:'''
+          #!/bin/bash
+          cd /home/ilhem/NetBeansProjects/DataVisualiser/target
+        java -jar DataVisualiser-1.0-SNAPSHOT.jar
+          
+         
+        '''
+           
+         
+         
+    }    }
+    
+           
+        }
+    }
+ 
+}  
+  
