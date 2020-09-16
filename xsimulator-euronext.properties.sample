@@ -1,0 +1,58 @@
+##########################################################################################################
+# (c) SunGard Global Trading 2011. All Rights Reserved. #
+#
+# This is the configuration file for xDataFeeder. Its purpose is to inject data into various configurable streams.
+#
+# The sections in this sample file are intended to give you a running start at
+# getting the most out of this tool. Where appropriate, the default
+# values (values used when the setting is not specified) are provided.
+#
+#########################################################################################################
+
+xsimulator.gatewayName = EURONEXTGatewayTest
+xsimulator.marketName = ME
+xsimulator.testMessages = 100000
+# The start sequence that correspond to TradeID must be composed of 10 numbers 
+xsimulator.startSequence = 1100000001
+xsimulator.sendSequence = 0
+#xsimulator.messageProcessor = com.gl.ptd.sgw.simulate.euronext.EuronextSAMessageProcessor
+xsimulator.messageProcessor = com.gl.ptd.sgw.simulate.euronext.EuronextSAMessageProcessor
+
+xsimulator.processPathOutNew = true
+xsimulator.processPathIn = true
+xsimulator.processPathOutAck = true
+
+
+xsimulator.standAlone = true
+xsimulator.workflow=fullservice
+
+xsimulator.mq.hostName = localhost
+#xsimulator.mq.queueManager = 
+xsimulator.mq.port = 61616
+#xsimulator.mq.channel = 
+xsimulator.mq.queue.out = CCP_OUT
+xsimulator.mq.queue.in = CCP_IN
+
+xsimulator.database.username    = [user name]
+xsimulator.database.password    = [password]
+xsimulator.database.url         = jdbc:oracle:thin:@[hostname or IP address]:[port]:[SID]
+
+
+xsimulator.downstream.jms.initialContextFactory = org.apache.activemq.jndi.ActiveMQInitialContextFactory
+xsimulator.downstream.jms.providerUrl = tcp://localhost:61616
+xsimulator.downstream.jms.queueConnectionFactory = ConnectionFactory
+xsimulator.downstream.jms.out.queue = DS_IN
+xsimulator.downstream.jms.in.queue = DS_OUT
+
+# Full service workflow
+xsimulator.fullservice.Trade_msg1=0773230000000501280621M0##TRDDT2##A0000005592                 102913175624000000UCSD       00000691M00000691                                            5011MONEPMONEP     691       691       FCE         1359010011##1##691       MONEP     ##TRDDT2####TRDDT2##SFRENX0185632                            00000000Y+00000000000012+000052140000000000CONCT     MK MONEP274  ##TRDDT2##124416##TRDDT2##103003         1N     00 O                                                                       Y                 +00000000000000+00000000000000+000000000000000+00000000000012+00000000000000+000000000000000Y##TRDDT2##103003541727          000000000000000000+000052140000000000                                                                                 +000000000000000000
+xsimulator.fullservice.opReq=<FIXML xmlns="http://gl.com/ptd/mo/sg/fixml"><AllocInstrctn OpID="358" PosEfct="O" TransTyp="1"><Hdr SeqNum="358" MsgDt="##TRDDT##" SID="XMON" TID="691" SubMkt="XPAR" SubFirm="691" Snt="##TRDDT##T07:11:13.000Z" Gtwy="ETDGateway-Euronext" GtwyInst="EURONEXTGateway_MAM" GtwyVerID="19.4.1168140" SentBy="EURONEXTGateway_MAM" /><AllExc TrdID="##1##/691@##TRDDT2##" LastQty="12.0" /><Alloc Qty="12.0" IndAllocID="1"><Pty R="38" ID="U"><Sub Typ="50" ID="CLIENT"/></Pty></Alloc></AllocInstrctn></FIXML>
+xsimulator.fullservice.resp1=0622230000006301280470M0##TRDDT2##A0000033272                 122115581337000000UCSD       00000691M00000691                                            3021MONEP691       691       691       FCE         FIS##key##      1359010011##1####TRDDT2##1000032521##TRDDT2####TRDDT2##155813+00000000000012OCLIENT                         +00000000000050+00000000000000+00000000000115+00000000000115+000000000000000+00000000000157+00000000000060+000000000000000+00000000000115+00000000000065+000000000000000+00000000000157+00000000000110+000000000000000691       ##TRDDT2##155813323706
+
+# Give-up workflow
+xsimulator.giveup.Trade_msg1=0773230000000501280621M0##TRDDT2##A0000005592                 102913175624000000UCSD       00000691M00000691                                            5011MONEPMONEP     691       691       FCE         1359010011##1##691       MONEP     ##TRDDT2####TRDDT2##SFRENX0185632                            00000000Y+00000000000012+000052140000000000CONCT     MK MONEP274  ##TRDDT2##124416##TRDDT2##103003         1N     00 O                                                                       Y                 +00000000000000+00000000000000+000000000000000+00000000000012+00000000000000+000000000000000Y##TRDDT2##103003541727          000000000000000000+000052140000000000                                                                                 +000000000000000000
+xsimulator.giveup.opReq=<FIXML xmlns="http://gl.com/ptd/mo/sg/fixml"><AllocInstrctn OpID="344" PosEfct="O" TransTyp="1" Txt="GU"><Hdr SeqNum="344" MsgDt="##TRDDT##" SID="XMON" TID="691" SubMkt="XPAR" SubFirm="691" Snt="##TRDDT##T08:55:46.658+01:00" Gtwy="ETDGateway-Euronext" GtwyInst="EURONEXTGatewayTest" GtwyVerID="3.0.2-SA-INTEG-1078731" SentBy="EURONEXTGatewayTest" OriginSender="Amine" /><AllExc TrdID="##1##/691@##TRDDT2##" LastQty="12.0" /><Alloc Qty="12.0" IndAllocID="223" Typ="2"><Pty R="4" ID="990" /></Alloc></AllocInstrctn></FIXML>
+xsimulator.giveup.resp2=0437230000009201280285M0##TRDDT2##A0000009582                 122912581999000000UCSD       00000691M00000691                                            2031MONEP691       691       691       FCE         FIS##key##      2703670029##1####TRDDT2##1000001876##TRDDT2####TRDDT2##125819691       990       +00000000000012Y                 MO                               ##TRDDT2##125819869917                                                    
+
+xsimulator.tradeDt=2019-10-29
+xsimulator.businessDt=2019-10-29

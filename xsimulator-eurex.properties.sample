@@ -1,0 +1,56 @@
+##########################################################################################################
+# (c) SunGard Global Trading 2011. All Rights Reserved. #
+#
+# This is the configuration file for xDataFeeder. Its purpose is to inject data into various configurable streams.
+#
+# The sections in this sample file are intended to give you a running start at
+# getting the most out of this tool. Where appropriate, the default
+# values (values used when the setting is not specified) are provided.
+#
+#########################################################################################################
+
+xsimulator.gatewayName = EurexGatewayCLUTest
+xsimulator.marketName = GLBXV
+xsimulator.testMessages = 1
+xsimulator.startSequence = 100000
+xsimulator.sendSequence = 0
+xsimulator.messageProcessor = com.gl.ptd.sgw.simulate.eurex.EurexSAMessageProcessor
+#xsimulator.messageProcessor = com.gl.ptd.sgw.simulate.cme.CmeMessageProcessor
+xsimulator.processPathOutNew = true
+xsimulator.processPathIn = false
+xsimulator.processPathOutAck = false
+xsimulator.standAlone = true
+
+xsimulator.mq.hostName = localhost
+#xsimulator.mq.queueManager = 
+xsimulator.mq.port = 61616
+#xsimulator.mq.channel = 
+xsimulator.mq.queue.out = CCP_OUT
+xsimulator.mq.queue.in = CCP_IN
+
+xsimulator.database.username    = [user name]
+xsimulator.database.password    = [password]
+xsimulator.database.url         = jdbc:oracle:thin:@[hostname or IP address]:[port]:[SID]
+
+
+xsimulator.downstream.jms.initialContextFactory = org.apache.activemq.jndi.ActiveMQInitialContextFactory
+xsimulator.downstream.jms.providerUrl = tcp://localhost:61616
+xsimulator.downstream.jms.queueConnectionFactory = ConnectionFactory
+xsimulator.downstream.jms.out.queue = DS_IN
+xsimulator.downstream.jms.in.queue = DS_OUT
+
+#xsimulator.trade=<?xml version="1.0" encoding="UTF-8"?><FIXML xmlns="www.eurexchange.com/technology"><TrdCaptRpt RptID="##1##@EUREXTRD0" TransTyp="0" RptTyp="0" TrdTyp="0" TrdHandlInst="0" TrnsfrRsn="000" MtchID="50" LastQty="560" LastPx="1.06" Ccy="EUR" LastMkt="XEUR" TrdDt="##TRDDT##" BizDt="##BUSDT##" MLegRptTyp="1" LastUpdateTm="##BUSDT##T11:25:35.834+00:00"><Hdr SID="ECAG" TID="GLBXV" Snt="##BUSDT##T11:25:35.835+00:00"/><Pty ID="GLBXV" R="4"/><Pty ID="GLBXV" R="1"/><Pty ID="A1" R="38"/><Pty ID="SIM001" R="12"/><Pty ID="GLBXVSIM001" R="11"/><Instrmt Sym="A##2##" MMY="201712"/><TrdRegTS TS="##TRDDT##T11:25:35.806+00:00" Typ="1"/><TrdRegTS TS="##TRDDT##T11:25:35.810+00:00" Typ="2"/><TrdRegTS TS="##TRDDT##T11:25:35.834+00:00" Typ="7"/><RptSide Side="2" TrdID="71800" PosEfct="O" Txt1="TEST1" Txt2="TESt2" AllocInd="0" AgrsrInd="Y" OrdCat="1"><TrdRegTS TS="##TRDDT##T11:25:35.806+00:00" Typ="8"/><Qty Typ="TOT" Long="257029" Short="303938"/><Qty Typ="ALC" Long="560" Short="1013"/><Qty Typ="PA" Long="0" Short="560"/><TrdRptOrdDetl OrdID="1511422555627004006" OrdTyp="2" OrdStat="2"><OrdQty Qty="560"/></TrdRptOrdDetl><ReltdPos ID="3FJ77" Src="3"/></RptSide></TrdCaptRpt></FIXML>
+#xsimulator.opReq=<FIXML xmlns="http://gl.com/ptd/mo/sg/fixml"><AllocInstrctn OpID="273" TransTyp="1"><Hdr SeqNum="273" MsgDt="##BUSDT##" SID="ECAG" TID="GLBXV" SubMkt="XEUR" SubFirm="GLBXV" Snt="##BUSDT##T12:25:36.167+01:00" Gtwy="ETDGateway_ECAG" GtwyInst="EUREXInst" GtwyVerID="$version$" SentBy="EUREXInst"/><AllExc TrdID="##1##@EUREXTRD0@##TRDDT2##" LastQty="560.0"/><Alloc Qty="560.0" IndAllocID="1" Txt="CLIENTUPDATE"><Pty R="4" ID="GLBXV"/><Pty R="22" ID="XEUR"/><Pty R="24" ID="TESt2"/><Pty R="38" ID="A1"></Pty></Alloc></AllocInstrctn></FIXML>
+#xsimulator.resp1=<?xml version="1.0" encoding="UTF-8"?><FIXML xmlns="www.eurexchange.com/technology"><TrdCaptRptAck RptID="##1##@EUREXACK0" TransTyp="2" RptTyp="0" RptRefID="##1##@EUREXTRD0" TrdRptStat="0"><Hdr SID="ECAG" TID="GLBXV" Snt="##BUSDT##T11:56:14.520+00:00"/><Instrmt Sym="A##2##"/></TrdCaptRptAck></FIXML>
+#xsimulator.resp2=<?xml version="1.0" encoding="UTF-8"?><FIXML xmlns="www.eurexchange.com/technology"><TrdCaptRpt RptID="##1##@EUREXTRD2" TransTyp="0" RptTyp="0" TrdTyp="0" TrdHandlInst="0" TrnsfrRsn="005" RptRefID="##1##@EUREXTRD0" MtchID="50" LastQty="560" LastPx="1.06" Ccy="EUR" LastMkt="XEUR" TrdDt="##TRDDT##" BizDt="##BUSDT##" MLegRptTyp="1" LastUpdateTm="##BUSDT##T11:56:14.508+00:00"><Hdr SID="ECAG" TID="GLBXV" Snt="##BUSDT##T11:56:14.510+00:00"/><Pty ID="GLBXV" R="4"/><Pty ID="GLBXV" R="1"/><Pty ID="A1" R="38"/><Pty ID="SIM001" R="12"/><Pty ID="GLBXVSIM001" R="11"/><Instrmt Sym="A##2##" MMY="201712"/><TrdRegTS TS="##TRDDT##T11:25:35.806+00:00" Typ="1"/><TrdRegTS TS="##TRDDT##T11:25:35.810+00:00" Typ="2"/><TrdRegTS TS="##TRDDT##T11:25:35.834+00:00" Typ="7"/><RptSide Side="2" TrdID="71800" PosEfct="O" Txt1="CLIENTUPDATE" Txt2="TESt2" AllocInd="0" AgrsrInd="Y" OrdCat="1"><TrdRegTS TS="##TRDDT##T11:25:35.806+00:00" Typ="8"/><Qty Typ="TOT" Long="257029" Short="303938"/><Qty Typ="ALC" Long="560" Short="1013"/><Qty Typ="PA" Long="0" Short="0"/><TrdRptOrdDetl OrdID="1511422555627004006" OrdTyp="2" OrdStat="2"><OrdQty Qty="560"/></TrdRptOrdDetl><ReltdPos ID="3FJ77" Src="3"/></RptSide></TrdCaptRpt></FIXML>
+#xsimulator.resp3=<?xml version="1.0" encoding="UTF-8"?><FIXML xmlns="www.eurexchange.com/technology"><TrdCaptRpt RptID="##1##@EUREXTRD1" TransTyp="4" RptTyp="6" TrdTyp="0" TrdHandlInst="0" TrnsfrRsn="005" RptRefID="##1##@EUREXTRD0" MtchID="50" LastQty="560" LastPx="1.06" Ccy="EUR" LastMkt="XEUR" TrdDt="##TRDDT##" BizDt="##BUSDT##" MLegRptTyp="1" LastUpdateTm="##TRDDT##T11:56:14.508+00:00"><Hdr SID="ECAG" TID="GLBXV" Snt="##BUSDT##T11:56:14.509+00:00"/><Pty ID="GLBXV" R="4"/><Pty ID="GLBXV" R="1"/><Pty ID="A1" R="38"/><Pty ID="SIM001" R="12"/><Pty ID="GLBXVSIM001" R="11"/><Instrmt Sym="A##2##" MMY="201712"/><TrdRegTS TS="##TRDDT##T11:25:35.834+00:00" Typ="7"/><TrdRegTS TS="##TRDDT##T11:25:35.806+00:00" Typ="1"/><TrdRegTS TS="##TRDDT##T11:25:35.810+00:00" Typ="2"/><RptSide Side="2" TrdID="71800" PosEfct="O" Txt1="TEST1" Txt2="TESt2" AllocInd="0" AgrsrInd="Y" OrdCat="1"><TrdRegTS TS="##TRDDT##T11:25:35.806+00:00" Typ="8"/><Qty Typ="TOT" Long="257029" Short="303938"/><Qty Typ="ALC" Long="560" Short="1013"/><Qty Typ="PA" Long="0" Short="0"/><TrdRptOrdDetl OrdID="1511422555627004006" OrdTyp="2" OrdStat="2"><OrdQty Qty="560"/></TrdRptOrdDetl><ReltdPos ID="3FJ77" Src="3"/></RptSide></TrdCaptRpt></FIXML>
+
+#-- for historical
+xsimulator.trade=<?xml version="1.0" encoding="UTF-8"?><FIXML xmlns="www.eurexchange.com/technology"><TrdCaptRpt RptID="##1##@EUREXTRD3" TransTyp="0" RptTyp="0" TrdTyp="0" TrdHandlInst="0" TrnsfrRsn="005" RptRefID="##1##@EUREXTRD2" MtchID="50" LastQty="560" LastPx="1.06" Ccy="EUR" LastMkt="XEUR" TrdDt="##TRDDT##" BizDt="##BUSDT##" MLegRptTyp="1" LastUpdateTm="##BUSDT##T11:56:24.508+02:00"><Hdr SID="ECAG" TID="GLBXV" Snt="##BUSDT##T11:56:14.510+00:00"/><Pty ID="GLBXV" R="4"/><Pty ID="GLBXV" R="1"/><Pty ID="A1" R="38"/><Pty ID="SIM001" R="12"/><Pty ID="GLBXVSIM001" R="11"/><Instrmt Sym="A##2##" MMY="201712"/><TrdRegTS TS="##TRDDT##T11:25:35.806+00:00" Typ="1"/><TrdRegTS TS="##TRDDT##T11:25:35.810+00:00" Typ="2"/><TrdRegTS TS="##TRDDT##T11:25:35.834+00:00" Typ="7"/><RptSide Side="2" TrdID="71800" PosEfct="O" Txt1="CLIENTUPDATE" Txt2="TESt2" AllocInd="0" AgrsrInd="Y" OrdCat="1"><TrdRegTS TS="##TRDDT##T11:25:35.806+00:00" Typ="8"/><Qty Typ="TOT" Long="257029" Short="303938"/><Qty Typ="ALC" Long="560" Short="1013"/><Qty Typ="PA" Long="0" Short="0"/><TrdRptOrdDetl OrdID="1511422555627004006" OrdTyp="2" OrdStat="2"><OrdQty Qty="560"/></TrdRptOrdDetl><ReltdPos ID="3FJ77" Src="3"/></RptSide></TrdCaptRpt></FIXML>
+xsimulator.opReq=<FIXML xmlns="http://gl.com/ptd/mo/sg/fixml"><AllocInstrctn OpID="273" TransTyp="1"><Hdr SeqNum="273" MsgDt="##BUSDT##" SID="ECAG" TID="GLBXV" SubMkt="XEUR" SubFirm="GLBXV" Snt="##BUSDT##T12:25:36.167+01:00" Gtwy="ETDGateway_ECAG" GtwyInst="EUREXInst" GtwyVerID="$version$" SentBy="EUREXInst"/><AllExc TrdID="##1##@EUREXTRD3@##TRDDT2##" LastQty="560.0"/><Alloc Qty="560.0" IndAllocID="1" Txt="CLIENTUPDATE2"><Pty R="4" ID="GLBXV"/><Pty R="22" ID="XEUR"/><Pty R="24" ID="TESt3"/><Pty R="38" ID="A1"></Pty></Alloc></AllocInstrctn></FIXML>
+xsimulator.resp1=<?xml version="1.0" encoding="UTF-8"?><FIXML xmlns="www.eurexchange.com/technology"><TrdCaptRptAck RptID="##1##@EUREXACK0" TransTyp="2" RptTyp="0" RptRefID="##1##@EUREXTRD3" TrdRptStat="0"><Hdr SID="ECAG" TID="GLBXV" Snt="##BUSDT##T11:56:14.520+00:00"/><Instrmt Sym="A##2##"/></TrdCaptRptAck></FIXML>
+xsimulator.resp2=<?xml version="1.0" encoding="UTF-8"?><FIXML xmlns="www.eurexchange.com/technology"><TrdCaptRpt RptID="##1##@EUREXTRD5" TransTyp="0" RptTyp="0" TrdTyp="0" TrdHandlInst="0" TrnsfrRsn="005" RptRefID="##1##@EUREXTRD3" MtchID="50" LastQty="560" LastPx="1.06" Ccy="EUR" LastMkt="XEUR" TrdDt="##TRDDT##" BizDt="##BUSDT##" MLegRptTyp="1" LastUpdateTm="##BUSDT##T11:56:14.508+00:00"><Hdr SID="ECAG" TID="GLBXV" Snt="##BUSDT##T11:56:14.510+00:00"/><Pty ID="GLBXV" R="4"/><Pty ID="GLBXV" R="1"/><Pty ID="A1" R="38"/><Pty ID="SIM001" R="12"/><Pty ID="GLBXVSIM001" R="11"/><Instrmt Sym="A##2##" MMY="201712"/><TrdRegTS TS="##TRDDT##T11:25:35.806+00:00" Typ="1"/><TrdRegTS TS="##TRDDT##T11:25:35.810+00:00" Typ="2"/><TrdRegTS TS="##TRDDT##T11:25:35.834+00:00" Typ="7"/><RptSide Side="2" TrdID="71800" PosEfct="O" Txt1="CLIENTUPDATE2" Txt2="TESt3" AllocInd="0" AgrsrInd="Y" OrdCat="1"><TrdRegTS TS="##TRDDT##T11:25:35.806+00:00" Typ="8"/><Qty Typ="TOT" Long="257029" Short="303938"/><Qty Typ="ALC" Long="560" Short="1013"/><Qty Typ="PA" Long="0" Short="0"/><TrdRptOrdDetl OrdID="1511422555627004006" OrdTyp="2" OrdStat="2"><OrdQty Qty="560"/></TrdRptOrdDetl><ReltdPos ID="3FJ77" Src="3"/></RptSide></TrdCaptRpt></FIXML>
+xsimulator.resp3=<?xml version="1.0" encoding="UTF-8"?><FIXML xmlns="www.eurexchange.com/technology"><TrdCaptRpt RptID="##1##@EUREXTRD4" TransTyp="4" RptTyp="6" TrdTyp="0" TrdHandlInst="0" TrnsfrRsn="005" RptRefID="##1##@EUREXTRD3" MtchID="50" LastQty="560" LastPx="1.06" Ccy="EUR" LastMkt="XEUR" TrdDt="##TRDDT##" BizDt="##BUSDT##" MLegRptTyp="1" LastUpdateTm="##TRDDT##T11:56:14.508+00:00"><Hdr SID="ECAG" TID="GLBXV" Snt="##BUSDT##T11:56:14.509+00:00"/><Pty ID="GLBXV" R="4"/><Pty ID="GLBXV" R="1"/><Pty ID="A1" R="38"/><Pty ID="SIM001" R="12"/><Pty ID="GLBXVSIM001" R="11"/><Instrmt Sym="A##2##" MMY="201712"/><TrdRegTS TS="##TRDDT##T11:25:35.834+00:00" Typ="7"/><TrdRegTS TS="##TRDDT##T11:25:35.806+00:00" Typ="1"/><TrdRegTS TS="##TRDDT##T11:25:35.810+00:00" Typ="2"/><RptSide Side="2" TrdID="71800" PosEfct="O" Txt1="TEST1" Txt2="TESt3" AllocInd="0" AgrsrInd="Y" OrdCat="1"><TrdRegTS TS="##TRDDT##T11:25:35.806+00:00" Typ="8"/><Qty Typ="TOT" Long="257029" Short="303938"/><Qty Typ="ALC" Long="560" Short="1013"/><Qty Typ="PA" Long="0" Short="0"/><TrdRptOrdDetl OrdID="1511422555627004006" OrdTyp="2" OrdStat="2"><OrdQty Qty="560"/></TrdRptOrdDetl><ReltdPos ID="3FJ77" Src="3"/></RptSide></TrdCaptRpt></FIXML>
+
+xsimulator.tradeDt=2017-12-01
+xsimulator.businessDt=2017-12-02

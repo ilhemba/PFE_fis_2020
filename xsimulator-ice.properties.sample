@@ -1,0 +1,60 @@
+##########################################################################################################
+# (c) SunGard Global Trading 2011. All Rights Reserved. #
+#
+# This is the configuration file for xDataFeeder. Its purpose is to inject data into various configurable streams.
+#
+# The sections in this sample file are intended to give you a running start at
+# getting the most out of this tool. Where appropriate, the default
+# values (values used when the setting is not specified) are provided.
+#
+#########################################################################################################
+
+xsimulator.gatewayName = IceGateway
+xsimulator.marketName = CLU
+xsimulator.testMessages = 100000
+xsimulator.startSequence = 1
+xsimulator.sendSequence = 0
+xsimulator.messageProcessor = com.gl.ptd.sgw.simulate.ice.IceSAMessageProcessor
+xsimulator.processPathOutNew = true
+xsimulator.processPathIn = true
+xsimulator.processPathOutAck = true
+xsimulator.standAlone = true
+
+xsimulator.mq.hostName = localhost
+#xsimulator.mq.queueManager = 
+xsimulator.mq.port = 61616
+#xsimulator.mq.channel = 
+xsimulator.mq.queue.out = CCP_OUT
+xsimulator.mq.queue.in = CCP_IN
+
+;xsimulator.database.username    = [user name]
+;xsimulator.database.password    = [password]
+;xsimulator.database.url         = jdbc:oracle:thin:@[hostname or IP address]:[port]:[SID]
+
+
+xsimulator.downstream.jms.initialContextFactory = org.apache.activemq.jndi.ActiveMQInitialContextFactory
+xsimulator.downstream.jms.providerUrl = tcp://localhost:61616
+xsimulator.downstream.jms.queueConnectionFactory = ConnectionFactory
+xsimulator.downstream.jms.out.queue = DS_IN
+xsimulator.downstream.jms.in.queue = DS_OUT
+
+#Full Service
+;xsimulator.trade=<?xml version="1.0" encoding="UTF-8"?><FIXML><TrdCaptRpt RptID="2" CopyMsgInd="Y" TrdRptStat="0" TrdID="##1##" LastPx="28.2195" LastQty="262" TrdDt="##TRDDT##" BizDt="##BUSDT##" TxnTm="##TRDDT##T15:45:38-05:00" TrdTyp="12" MtchStat="0" VenuTyp="X" ExecID="21154538365997" TrdPubInd="1" RptTyp="0" TransTyp="0"><Hdr Snt="##TRDDT##T15:46:31-05:00" SID="ICE" TID="CLU" /> <RegTrdID Typ="0" ID="##1##0000000000000000007Z4QN" Src="1010000180" Evnt="2" /> <TrdRegTS Typ="19" TS="##TRDDT##T15:46:31.382-05:00" /><TrdRegTS Typ="1" TS="##TRDDT##T15:45:38.827-05:00" /> <Pty R="73" ID="IFEU" /><Instrmt ID="WMJ" SecTyp="FUT" MMY="201903" Exch="IFEU" /> <RptSide Side="1" OrdID="##1##1" ClOrdID2="##1##2" AgrsrInd="N" ClOrdID="211545381" InptSrc="ICESYS" InptDev="ICESYS" TrdrTxt="XN9AP" PosEfct="O"> <Pty R="17" ID="XXX" /><Pty R="18" ID="XXX" /><Pty R="12" ID="CLU" /><Pty R="37" ID="XXX" /><Pty R="21" ID="ICEU" /><Pty R="4" ID="CLU" /><Pty R="1" ID="CLU" /><Pty R="22" ID="IFEU" /><Pty R="38" ID="W"><Sub ID="4" Typ="26" /></Pty><Pty R="24" ID="DEV" /><Pty R="44" ID="135974evVq" /><Pty R="11" ID="5142373214459454" /><Pty R="13" ID="CLU" /></RptSide></TrdCaptRpt></FIXML>
+
+;xsimulator.opReq=<?xml version="1.0" encoding="UTF-8"?><FIXML xmlns="http://gl.com/ptd/mo/sg/fixml"><AllocInstrctn TransTyp="1" OpID="OP##1##" PosEfct="O" Txt="TEST11"><Hdr SeqNum="242" MsgDt="##BUSDT##" SID="IFEU" TID="CLU" SubFirm="CLU" Snt="##BUSDT##T19:40:06.603Z" Gtwy="ETDGateway_IFEU" GtwyInst="ETDGateway_IFEU" SentBy="NextGen" /><Alloc Qty="262.0" IndAllocID="AL##1##" Txt="TEST22"><Pty R="22" ID="IFEU" /><Pty R="38" ID="H" /><Pty R="24" ID="DESK1_ACC1" /></Alloc><AllExc TrdID="IFEU>##1##/CLU@##TRDDT##" LastQty="262.0" /><Pty R="24" ID="TEST" /><Pty R="38" ID="H" /></AllocInstrctn></FIXML>
+
+;xsimulator.resp1=<?xml version="1.0" encoding="UTF-8"?><FIXML><TrdCaptRpt RptID="2" CopyMsgInd="Y" TrdRptStat="0" TrdID="##1##" LastPx="28.2195" LastQty="262" TrdDt="##TRDDT##" BizDt="##BUSDT##" TxnTm="##TRDDT##T15:45:38-05:00" TrdTyp="12" MtchStat="0" VenuTyp="X" ExecID="21154538365997" TrdPubInd="1" RptTyp="0" TransTyp="2"><Hdr Snt="##TRDDT##T15:46:31-05:00" SID="ICE" TID="CLU" /> <RegTrdID Typ="0" ID="##1##0000000000000000007Z4QN" Src="1010000180" Evnt="2" /> <TrdRegTS Typ="19" TS="##TRDDT##T15:46:31.382-05:00" /><TrdRegTS Typ="1" TS="##TRDDT##T15:45:38.827-05:00" /> <Pty R="73" ID="IFEU" /><Instrmt ID="WMJ" SecTyp="FUT" MMY="201903" Exch="IFEU" /> <RptSide Side="1" OrdID="##1##1" ClOrdID2="##1##2" AgrsrInd="N" ClOrdID="211545381" InptSrc="ICESYS" InptDev="API" TrdrTxt="XN9AP" Txt="TEST22" PosEfct="O"> <Pty R="17" ID="XXX" /><Pty R="18" ID="XXX" /><Pty R="12" ID="CLU" /><Pty R="37" ID="XXX" /><Pty R="21" ID="ICEU" /><Pty R="4" ID="CLU" /><Pty R="1" ID="CLU" /><Pty R="22" ID="IFEU" /><Pty R="38" ID="H"><Sub ID="2" Typ="26" /></Pty><Pty R="24" ID="DESK1_ACC1" /><Pty R="44" ID="135974evVq" /><Pty R="11" ID="5142373214459454" /><Pty R="13" ID="CLU" /></RptSide></TrdCaptRpt></FIXML>
+
+xsimulator.tradeDt=2018-12-05
+xsimulator.businessDt=2018-12-05
+
+#Give-up workflow
+
+xsimulator.trade=<FIXML><TrdCaptRpt RptID="228" CopyMsgInd="Y" TrdRptStat="0" TrdID="##1##" LastPx="115.25" LastQty="111" TrdDt="##TRDDT##" BizDt="##BUSDT##" TxnTm="##TRDDT##T14:28:15-05:00" TrdTyp="0" MtchStat="0" VenuTyp="E" ExecID="5142815673946" TrdPubInd="1" TransTyp="2" RptTyp="0"><Hdr Snt="##TRDDT##T07:42:52-05:00" SID="ICE" TID="CLU"/><RegTrdID Typ="0" ID="##1##000000000000000000000811LY" Src="1010000180" Evnt="2"/><TrdRegTS Typ="19" TS="##TRDDT##T07:42:52.510-05:00"/><TrdRegTS Typ="1" TS="##TRDDT##T14:28:15.044-05:00"/><Pty R="73" ID="IFEU"/><Instrmt ID="IOR" SecTyp="FUT" MMY="201903" Exch="IFEU"/><RptSide Side="2" OrdID="##1##53" ClOrdID2="##1##54" AgrsrInd="N" ClOrdID="##1##55" InptSrc="ICE" InptDev="UI" TrdrTxt="XN9AP" Txt="UM7" PosEfct="O"><Pty R="12" ID="CLU"/><Pty R="21" ID="ICEU"/><Pty R="4" ID="CLU"/><Pty R="1" ID="CLU"/><Pty R="22" ID="IFEU"/><Pty R="38" ID="N"><Sub ID="2" Typ="26"/></Pty><Pty R="24" ID="DEV"/><Pty R="44" ID="135974evVq"/><Pty R="55" ID="YlMfdKYG"/><Pty R="13" ID="CLU"/></RptSide></TrdCaptRpt></FIXML>
+
+xsimulator.opReq=<?xml version="1.0" encoding="UTF-8"?><FIXML xmlns="http://gl.com/ptd/mo/sg/fixml"> <AllocInstrctn OpID="##1##" PosEfct="O" TransTyp="1"><Hdr SeqNum="1198" MsgDt="##BUSDT##" SID="IFEU" SubMkt="IFEU" TID="CLU" SubFirm="CLU" Snt="##BUSDT##T05:21:12.821-05:00" Gtwy="ETDGateway_IFEU" GtwyInst="ICE_EU_CLU" GtwyVerID="SA.2018.Q4" SentBy="ICE_EU_CLU" PrevlyRpted="N" GatewayAPIVersion="2.24"/><AllExc TrdID="IFEU>##1##/CLU@##TRDDT2##" LastQty="88.0"/><Pty R="38" ID="N"/><Pty ID="TEST123" R="24"/><Alloc Qty="88.0" IndAllocID="##1##" Txt="Sample1" Typ="2"><Pty R="4" ID="CLT"/><Pty ID="FISU" R="24"/><Pty R="38" ID="H"/></Alloc></AllocInstrctn></FIXML>
+
+
+xsimulator.resp1=<FIXML><TrdCaptRpt RptID="300" CopyMsgInd="Y" TrdRptStat="0" TrdID="##1##" LastPx="61.48" LastQty="88" TrdDt="##TRDDT##" BizDt="##BUSDT##" TxnTm="##TRDDT##T02:35:59-05:00" TrdTyp="0" MtchStat="0" VenuTyp="E" ExecID="97811544113" TrdPubInd="1" TransTyp="2" RptTyp="0" MsgEvtSrc="MQM"><Hdr Snt="##TRDDT##T06:37:01-05:00" SID="ICE" TID="CLU"/><RegTrdID Typ="0" ID="##1##000000000000000000000811LY" Src="1010000180" Evnt="2"/><TrdRegTS Typ="19" TS="##TRDDT##T06:37:01.000-05:00"/><TrdRegTS Typ="1" TS="##TRDDT##T02:35:59.000-05:00"/><Instrmt ID="IOR" SecTyp="FUT" MMY="201909" Exch="IFEU"/><RptSide Side="1" OrdID="##1##72" ClOrdID2="##1##78" AgrsrInd="Y" ClOrdID="##1##25" InptSrc="ICE" InptDev="API" AllocInd="2" TrdrTxt="TEST123ABC" PosEfct="O" ClAppTyp="WEBICE" ClAppSubTyp="TESTISV"><Pty R="12" ID="CLU"/><Pty R="21" ID="ICEU"/><Pty R="4" ID="CLU"/><Pty R="1" ID="CLU"/><Pty R="22" ID="IFEU"/><Pty R="38" ID="N"><Sub ID="2" Typ="26"/></Pty><Pty R="24" ID="TEST123"/><Pty R="44" ID="CLU"/><Pty R="55" ID="6964"/><Pty R="45" ID="TESTABC"/><Pty R="11" ID="CLU"/><Pty R="13" ID="CLU"/><Pty R="213" ID="CLU"/><Pty R="212" ID="CLU"/><Alloc Qty="88" Txt="SAMPLE1" AllocPosEfct="O"><Pty R="38" ID="H"/><Pty R="24" ID="FISU"/><Pty R="4" ID="CLT"/><Pty R="21" ID="ICEU"/><Pty R="1" ID="CLT"/><Pty R="22" ID="IFEU"/></Alloc></RptSide></TrdCaptRpt></FIXML>
+xsimulator.resp2=<FIXML><AllocInstrctnAlert TrdPubInd="1" MsgEvtSrc="MQM" InptSrc="API" TrdTyp="0" BizDt="##BUSDT##" TrdrTxt="TEST123ABC" PosEfct="O" TxnTm="##TRDDT##T06:37:04-05:00" TrdDt="##TRDDT##" AvgPx="61.48" SesSub="E" RemQty="88" GrpQty="88" Qty="88" Side="1" GrpID="91##1##" Stat="0" Typ="13" TransTyp="0" ID="301"><Hdr Snt="##TRDDT##T06:37:04-05:00" TID="CLU" SID="ICE"/><OrdAlloc ClOrdID="##1##25"/><AllExc LastQty="88" TrdID="##1##"/><Instrmt Exch="IFEU" MMY="201909" SecTyp="FUT" ID="IOR"/><Pty R="21" ID="ICEU"/><Pty R="22" ID="IFEU"/><Pty R="4" ID="CLU"/><Pty R="1" ID="CLU"/><Pty R="12" ID="CLU"/><Pty R="24" ID="TEST123"/><Pty R="38" ID="N"><Sub Typ="26" ID="2"/></Pty><Pty R="44" ID="CLU"/><Pty R="55" ID="6964"/><Pty R="45" ID="TESTABC"/></AllocInstrctnAlert></FIXML>
+xsimulator.resp3=<FIXML><AllocRpt TrdPubInd="1" TrdrTxt="TEST123ABC" PosEfct="O" TxnTm="##TRDDT##T06:37:04-05:00" TrdDt="##TRDDT##" AvgPx="61.48" SesSub="E" RemQty="0" GrpQty="88" Qty="88" Side="1" InptDev="API" MsgEvtSrc="MQM" InptSrc="ICE" TrdSubTyp="5" TrdTyp="0" BizDt="##BUSDT##" GrpID="91##1##" Stat="3" RptTyp="2" TransTyp="0" RptID="302"><Hdr Snt="##TRDDT##T06:37:04-05:00" TID="CLU" SID="ICE"/><OrdAlloc ClOrdID="##1##25"/><AllExc ClAppSubTyp="TESTISV" ClAppTyp="WEBICE" LastQty="88" ExecID="97811544113" TrdID="##1##"/><Instrmt Exch="IFEU" MMY="201909" SecTyp="FUT" ID="IOR"/><Pty R="21" ID="ICEU"/><Pty R="22" ID="IFEU"/><Pty R="4" ID="CLU"/><Pty R="12" ID="CLU"/><Pty R="38" ID="N"><Sub Typ="26" ID="2"/></Pty><Pty R="44" ID="CLU"/><Pty R="55" ID="6964"/><Pty R="45" ID="TESTABC"/><Pty R="212" ID="CLU"/><Pty R="213" ID="CLU"/><Pty R="1" ID="CLU"/><Pty R="24" ID="TEST123"/><Alloc ReqQty="88" AllocPosEfct="O" Txt="SAMPLE1" IndAllocID2="91##1##" Qty="88"><Pty R="21" ID="ICEU"/><Pty R="22" ID="IFEU"/><Pty R="1" ID="CLT"/><Pty R="4" ID="CLT"/><Pty R="24" ID="FISU"/><Pty R="38" ID="H"><Sub Typ="26" ID="2"/></Pty><RegTrdID Evnt="2" Typ="0" Src="1010000180" ID="0000000000000000000000000002K9XG"/></Alloc></AllocRpt></FIXML>

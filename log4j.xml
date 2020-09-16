@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration debug="true"
+	xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+	<appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:ss} %5p %c{1} - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="fileAppender" class="org.apache.log4j.RollingFileAppender">
+		<param name="append" value="true" />
+		<param name="file" value="log/xsimulator.log" />		
+		<param name="MaxFileSize" value="5000KB" />
+		<param name="maxBackupIndex" value="10" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyyMMdd HH:mm:ss,SSS} %-p %X{PATH} %c{1} - %m%n" />
+		</layout>
+	</appender>
+
+	<console name="STDOUT">
+		<PatternLayout pattern="%d [%p] %c %m%n" />
+	</console>
+
+	<logger name="com.gl.ptd.mo.sg">
+		<level value="info" />
+	</logger>
+
+	<!--
+		to customize log level at package level packages are 
+		a. com.gl.ptd.mo.sg.xdatafeeder.processor 
+		b. com.gl.ptd.mo.sg.xdatafeeder.source 
+		c. com.gl.ptd.mo.sg.xdatafeeder.target
+		d. com.gl.ptd.mo.sg.xdatafeeder.util
+		Levels supported are INFO ,WARN, ERROR
+	-->
+
+	<root>
+		<level value="info" />
+		<appender-ref ref="consoleAppender" />
+		<appender-ref ref="fileAppender" />
+	</root>
+
+</log4j:configuration> 

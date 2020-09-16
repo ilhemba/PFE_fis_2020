@@ -1,0 +1,39 @@
+##########################################################################################################
+# (c) SunGard Global Trading 2011. All Rights Reserved. #
+#
+# This is the configuration file for xDataFeeder. Its purpose is to inject data into various configurable streams.
+#
+# The sections in this sample file are intended to give you a running start at
+# getting the most out of this tool. Where appropriate, the default
+# values (values used when the setting is not specified) are provided.
+#
+#########################################################################################################
+
+xsimulator.gatewayName = IceGatewayCLUTest
+xsimulator.marketName = IFEU
+xsimulator.testMessages = 1
+xsimulator.startSequence = 100000
+xsimulator.sendSequence = 0
+xsimulator.messageProcessor = com.gl.ptd.sgw.simulate.ice.IceMessageProcessor
+#xsimulator.messageProcessor = com.gl.ptd.sgw.simulate.cme.CmeMessageProcessor
+xsimulator.processPathOutNew = true
+xsimulator.processPathIn = true
+xsimulator.processPathOutAck = true
+xsimulator.standAlone = true
+
+xsimulator.mq.hostName = [IP / Host name]
+xsimulator.mq.queueManager = [Queue Manager]
+xsimulator.mq.port = [Port]
+xsimulator.mq.channel = [Server Connection Channel Name]
+xsimulator.mq.queue.out = [IN Queue Name]
+xsimulator.mq.queue.in = [IN Queue Name]
+
+xsimulator.database.username    = [user name]
+xsimulator.database.password    = [password]
+xsimulator.database.url         = jdbc:oracle:thin:@[hostname or IP address]:[port]:[SID]
+
+xsimulator.downstream.jms.initialContextFactory = [ContextFactory]
+xsimulator.downstream.jms.providerUrl = [url]
+xsimulator.downstream.jms.queueConnectionFactory = [ConnectionFactory]
+xsimulator.downstream.jms.out.queue = [OUT QUEUE NAME]
+xsimulator.downstream.jms.in.queue = [IN QUEUE NAME]
